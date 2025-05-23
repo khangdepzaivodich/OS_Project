@@ -11,8 +11,6 @@ namespace OS_Project
         public BankerControl()
         {
             InitializeComponent();
-
-            // Subscribe to user input changes (for example, on TextBox Leave or TextChanged)
             NoResources.Leave += UserInputChanged;
             NoProcesses.Leave += UserInputChanged;
 
