@@ -249,13 +249,14 @@ namespace OS_Project
                     current = r;
                     seekSequence.Add(current);
                 }
-                if (left.Count > 0 && current != 0)
+                if (left.Count > 0 && current != diskMin)
                 {
-                    totalSeek += current;
-                    steps.Add($"{current} → 0 ({current})");
-                    current = 0;
+                    totalSeek += Math.Abs(current - diskMin);
+                    steps.Add($"{current} → {diskMin} ({Math.Abs(current - diskMin)})");
+                    current = diskMin;
                     seekSequence.Add(current);
                 }
+
                 foreach (int r in right)
                 {
                     totalSeek += Math.Abs(current - r);
@@ -275,11 +276,12 @@ namespace OS_Project
                 }
                 if (right.Count > 0 && current != diskMax)
                 {
-                    totalSeek += diskMax - current;
-                    steps.Add($"{current} → {diskMax} ({diskMax - current})");
+                    totalSeek += Math.Abs(current - diskMax);
+                    steps.Add($"{current} → {diskMax} ({Math.Abs(current - diskMax)})");
                     current = diskMax;
                     seekSequence.Add(current);
                 }
+
                 left.Reverse();
                 foreach (int r in left)
                 {
@@ -345,7 +347,6 @@ namespace OS_Project
             if (direction == "Left")
             {
                 left.Reverse();
-                // Đi hết các request bên trái
                 foreach (int r in left)
                 {
                     totalSeek += Math.Abs(current - r);
@@ -353,7 +354,6 @@ namespace OS_Project
                     current = r;
                     seekSequence.Add(current);
                 }
-                // Quay lại các request bên phải
                 foreach (int r in right)
                 {
                     totalSeek += Math.Abs(current - r);
@@ -362,9 +362,8 @@ namespace OS_Project
                     seekSequence.Add(current);
                 }
             }
-            else // direction == "Right"
+            else
             {
-                // Đi hết các request bên phải
                 foreach (int r in right)
                 {
                     totalSeek += Math.Abs(current - r);
@@ -373,7 +372,6 @@ namespace OS_Project
                     seekSequence.Add(current);
                 }
                 left.Reverse();
-                // Quay lại các request bên trái
                 foreach (int r in left)
                 {
                     totalSeek += Math.Abs(current - r);
@@ -464,16 +462,19 @@ namespace OS_Project
                     current = r;
                     seekSequence.Add(current);
                 }
-                if (current != 0)
+
+                if (current != diskMin)
                 {
-                    totalSeek += current;
-                    steps.Add($"{current} → 0 ({current})");
-                    current = 0;
+                    totalSeek += Math.Abs(current - diskMin);
+                    steps.Add($"{current} → {diskMin} ({Math.Abs(current - diskMin)})");
+                    current = diskMin;
                     seekSequence.Add(current);
                 }
-                steps.Add($"0 → {diskMax} (0)");
+
+                steps.Add($"{diskMin} → {diskMax} (0)");
                 current = diskMax;
                 seekSequence.Add(current);
+
                 right.Reverse();
                 foreach (int r in right)
                 {
@@ -483,7 +484,7 @@ namespace OS_Project
                     seekSequence.Add(current);
                 }
             }
-            else
+            else 
             {
                 foreach (int r in right)
                 {
@@ -492,16 +493,19 @@ namespace OS_Project
                     current = r;
                     seekSequence.Add(current);
                 }
+
                 if (current != diskMax)
                 {
-                    totalSeek += diskMax - current;
-                    steps.Add($"{current} → {diskMax} ({diskMax - current})");
+                    totalSeek += Math.Abs(diskMax - current);
+                    steps.Add($"{current} → {diskMax} ({Math.Abs(diskMax - current)})");
                     current = diskMax;
                     seekSequence.Add(current);
                 }
-                steps.Add($"{diskMax} → 0 (0)");
-                current = 0;
+
+                steps.Add($"{diskMax} → {diskMin} (0)");
+                current = diskMin;
                 seekSequence.Add(current);
+
                 foreach (int r in left)
                 {
                     totalSeek += Math.Abs(current - r);
@@ -510,6 +514,7 @@ namespace OS_Project
                     seekSequence.Add(current);
                 }
             }
+
 
             rtbResult.Text = $"Thuật toán Circular-SCAN (Hướng: {direction})\n\nTổng seek time: {totalSeek}\n\nChi tiết:\n{string.Join("\n", steps)}";
 
