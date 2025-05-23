@@ -34,28 +34,28 @@ namespace OS_Project
             this.lblMax = new System.Windows.Forms.Label();
             this.lblAllocation = new System.Windows.Forms.Label();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvAllocation = new System.Windows.Forms.DataGridView();
             this.dgvMax = new System.Windows.Forms.DataGridView();
             this.dgvNeed = new System.Windows.Forms.DataGridView();
             this.dgvAvailable = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvTotalResources = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnCheckSafety = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dgvTotalResources = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.NoProcesses = new System.Windows.Forms.TextBox();
-            this.NoResources = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NoResources = new System.Windows.Forms.TextBox();
+            this.NoProcesses = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllocation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTotalResources)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAvailable
@@ -63,9 +63,10 @@ namespace OS_Project
             this.lblAvailable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAvailable.AutoSize = true;
             this.lblAvailable.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblAvailable.Location = new System.Drawing.Point(615, 3);
+            this.lblAvailable.Location = new System.Drawing.Point(457, 2);
+            this.lblAvailable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAvailable.Name = "lblAvailable";
-            this.lblAvailable.Size = new System.Drawing.Size(52, 23);
+            this.lblAvailable.Size = new System.Drawing.Size(45, 19);
             this.lblAvailable.TabIndex = 2;
             this.lblAvailable.Text = "Need";
             // 
@@ -74,9 +75,10 @@ namespace OS_Project
             this.lblMax.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblMax.AutoSize = true;
             this.lblMax.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblMax.Location = new System.Drawing.Point(360, 3);
+            this.lblMax.Location = new System.Drawing.Point(267, 2);
+            this.lblMax.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMax.Name = "lblMax";
-            this.lblMax.Size = new System.Drawing.Size(44, 23);
+            this.lblMax.Size = new System.Drawing.Size(38, 19);
             this.lblMax.TabIndex = 1;
             this.lblMax.Text = "Max";
             // 
@@ -85,9 +87,10 @@ namespace OS_Project
             this.lblAllocation.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblAllocation.AutoSize = true;
             this.lblAllocation.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblAllocation.Location = new System.Drawing.Point(81, 3);
+            this.lblAllocation.Location = new System.Drawing.Point(56, 2);
+            this.lblAllocation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAllocation.Name = "lblAllocation";
-            this.lblAllocation.Size = new System.Drawing.Size(91, 23);
+            this.lblAllocation.Size = new System.Drawing.Size(77, 19);
             this.lblAllocation.TabIndex = 0;
             this.lblAllocation.Text = "Allocation";
             // 
@@ -97,8 +100,8 @@ namespace OS_Project
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.29239F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.78378F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 282F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
             this.tableLayoutPanel.Controls.Add(this.lblAllocation, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.lblMax, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.lblAvailable, 2, 0);
@@ -111,24 +114,14 @@ namespace OS_Project
             this.tableLayoutPanel.Controls.Add(this.label2, 4, 0);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 2;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(1261, 803);
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(946, 652);
             this.tableLayoutPanel.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(870, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 23);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Available";
             // 
             // dgvAllocation
             // 
@@ -138,11 +131,12 @@ namespace OS_Project
             this.dgvAllocation.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvAllocation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAllocation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAllocation.Location = new System.Drawing.Point(3, 33);
+            this.dgvAllocation.Location = new System.Drawing.Point(2, 26);
+            this.dgvAllocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvAllocation.Name = "dgvAllocation";
             this.dgvAllocation.RowHeadersVisible = false;
             this.dgvAllocation.RowHeadersWidth = 51;
-            this.dgvAllocation.Size = new System.Drawing.Size(248, 767);
+            this.dgvAllocation.Size = new System.Drawing.Size(186, 624);
             this.dgvAllocation.TabIndex = 3;
             // 
             // dgvMax
@@ -153,11 +147,12 @@ namespace OS_Project
             this.dgvMax.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvMax.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMax.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMax.Location = new System.Drawing.Point(257, 33);
+            this.dgvMax.Location = new System.Drawing.Point(192, 26);
+            this.dgvMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvMax.Name = "dgvMax";
             this.dgvMax.RowHeadersVisible = false;
             this.dgvMax.RowHeadersWidth = 51;
-            this.dgvMax.Size = new System.Drawing.Size(251, 767);
+            this.dgvMax.Size = new System.Drawing.Size(188, 624);
             this.dgvMax.TabIndex = 4;
             // 
             // dgvNeed
@@ -168,12 +163,13 @@ namespace OS_Project
             this.dgvNeed.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvNeed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvNeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNeed.Location = new System.Drawing.Point(514, 33);
+            this.dgvNeed.Location = new System.Drawing.Point(384, 26);
+            this.dgvNeed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvNeed.Name = "dgvNeed";
             this.dgvNeed.ReadOnly = true;
             this.dgvNeed.RowHeadersVisible = false;
             this.dgvNeed.RowHeadersWidth = 51;
-            this.dgvNeed.Size = new System.Drawing.Size(254, 767);
+            this.dgvNeed.Size = new System.Drawing.Size(191, 624);
             this.dgvNeed.TabIndex = 5;
             // 
             // dgvAvailable
@@ -184,23 +180,65 @@ namespace OS_Project
             this.dgvAvailable.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvAvailable.ColumnHeadersHeight = 29;
             this.dgvAvailable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAvailable.Location = new System.Drawing.Point(774, 33);
+            this.dgvAvailable.Location = new System.Drawing.Point(579, 26);
+            this.dgvAvailable.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvAvailable.Name = "dgvAvailable";
             this.dgvAvailable.ReadOnly = true;
             this.dgvAvailable.RowHeadersVisible = false;
             this.dgvAvailable.RowHeadersWidth = 51;
             this.dgvAvailable.RowTemplate.Height = 24;
-            this.dgvAvailable.Size = new System.Drawing.Size(276, 767);
+            this.dgvAvailable.Size = new System.Drawing.Size(208, 624);
             this.dgvAvailable.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(647, 2);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 19);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Available";
+            // 
+            // dgvTotalResources
+            // 
+            this.dgvTotalResources.AllowUserToAddRows = false;
+            this.dgvTotalResources.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvTotalResources.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvTotalResources.ColumnHeadersHeight = 29;
+            this.dgvTotalResources.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTotalResources.Location = new System.Drawing.Point(791, 26);
+            this.dgvTotalResources.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvTotalResources.Name = "dgvTotalResources";
+            this.dgvTotalResources.RowHeadersVisible = false;
+            this.dgvTotalResources.RowHeadersWidth = 51;
+            this.dgvTotalResources.RowTemplate.Height = 24;
+            this.dgvTotalResources.Size = new System.Drawing.Size(153, 624);
+            this.dgvTotalResources.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(811, 2);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 19);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Total Resources";
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.Green;
-            this.lblStatus.Location = new System.Drawing.Point(423, 104);
+            this.lblStatus.Location = new System.Drawing.Point(317, 84);
+            this.lblStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(85, 29);
+            this.lblStatus.Size = new System.Drawing.Size(66, 24);
             this.lblStatus.TabIndex = 7;
             this.lblStatus.Text = "Status";
             // 
@@ -211,9 +249,10 @@ namespace OS_Project
             this.btnCheckSafety.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckSafety.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCheckSafety.ForeColor = System.Drawing.Color.White;
-            this.btnCheckSafety.Location = new System.Drawing.Point(223, 92);
+            this.btnCheckSafety.Location = new System.Drawing.Point(167, 74);
+            this.btnCheckSafety.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCheckSafety.Name = "btnCheckSafety";
-            this.btnCheckSafety.Size = new System.Drawing.Size(154, 49);
+            this.btnCheckSafety.Size = new System.Drawing.Size(116, 40);
             this.btnCheckSafety.TabIndex = 6;
             this.btnCheckSafety.Text = "Check Safety";
             this.btnCheckSafety.UseVisualStyleBackColor = false;
@@ -228,88 +267,69 @@ namespace OS_Project
             this.groupBox1.Controls.Add(this.btnCheckSafety);
             this.groupBox1.Controls.Add(this.lblStatus);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 548);
+            this.groupBox1.Location = new System.Drawing.Point(0, 447);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1261, 255);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(946, 205);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Control";
             // 
-            // dgvTotalResources
+            // label4
             // 
-            this.dgvTotalResources.AllowUserToAddRows = false;
-            this.dgvTotalResources.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvTotalResources.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvTotalResources.ColumnHeadersHeight = 29;
-            this.dgvTotalResources.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTotalResources.Location = new System.Drawing.Point(1056, 33);
-            this.dgvTotalResources.Name = "dgvTotalResources";
-            this.dgvTotalResources.RowHeadersVisible = false;
-            this.dgvTotalResources.RowHeadersWidth = 51;
-            this.dgvTotalResources.RowTemplate.Height = 24;
-            this.dgvTotalResources.Size = new System.Drawing.Size(202, 767);
-            this.dgvTotalResources.TabIndex = 10;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(1091, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 23);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Total Resources";
-            // 
-            // NoProcesses
-            // 
-            this.NoProcesses.Location = new System.Drawing.Point(50, 63);
-            this.NoProcesses.Name = "NoProcesses";
-            this.NoProcesses.Size = new System.Drawing.Size(101, 22);
-            this.NoProcesses.TabIndex = 8;
-            // 
-            // NoResources
-            // 
-            this.NoResources.Location = new System.Drawing.Point(50, 140);
-            this.NoResources.Name = "NoResources";
-            this.NoResources.Size = new System.Drawing.Size(101, 22);
-            this.NoResources.TabIndex = 9;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(35, 93);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "No Resources";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 35);
+            this.label3.Location = new System.Drawing.Point(35, 28);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 16);
+            this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "No Processes";
             // 
-            // label4
+            // NoResources
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 114);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 16);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "No Resources";
+            this.NoResources.Location = new System.Drawing.Point(38, 114);
+            this.NoResources.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NoResources.Name = "NoResources";
+            this.NoResources.Size = new System.Drawing.Size(77, 20);
+            this.NoResources.TabIndex = 9;
+            // 
+            // NoProcesses
+            // 
+            this.NoProcesses.Location = new System.Drawing.Point(38, 51);
+            this.NoProcesses.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.NoProcesses.Name = "NoProcesses";
+            this.NoProcesses.Size = new System.Drawing.Size(77, 20);
+            this.NoProcesses.TabIndex = 8;
             // 
             // BankerControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tableLayoutPanel);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "BankerControl";
-            this.Size = new System.Drawing.Size(1261, 803);
+            this.Size = new System.Drawing.Size(946, 652);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllocation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTotalResources)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTotalResources)).EndInit();
             this.ResumeLayout(false);
 
         }
