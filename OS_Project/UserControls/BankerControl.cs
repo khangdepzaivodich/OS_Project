@@ -138,11 +138,11 @@ namespace OS_Project
 
                     if (string.IsNullOrEmpty(valStr))
                     {
-                        matrix[i, j] = 0; // Treat empty as 0
+                        matrix[i, j] = 0; 
                     }
                     else if (!int.TryParse(valStr, out int val) || val < 0)
                     {
-                        return false; // invalid input
+                        return false; 
                     }
                     else
                     {
@@ -167,11 +167,11 @@ namespace OS_Project
 
                 if (string.IsNullOrEmpty(valStr))
                 {
-                    vector[j] = 0; // Treat empty as 0
+                    vector[j] = 0; 
                 }
                 else if (!int.TryParse(valStr, out int val) || val < 0)
                 {
-                    return false; // invalid input
+                    return false; 
                 }
                 else
                 {
@@ -233,7 +233,7 @@ namespace OS_Project
             int[,] need = CalculateNeedMatrix(allocation, max);
 
             var safeSequence = new System.Collections.Generic.List<int>();
-
+            HighlightRow(dgvAvailable, 0, Color.LightCyan);
             for (int count = 0; count < n; count++)
             {
                 bool found = false;
@@ -242,7 +242,7 @@ namespace OS_Project
                     if (!finish[p])
                     {
                         HighlightRow(dgvNeed, p, Color.LightYellow);
-                        HighlightRow(dgvAvailable, 0, Color.LightCyan);
+                        
 
                         bool canProceed = true;
                         for (int r = 0; r < m; r++)
