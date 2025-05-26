@@ -70,14 +70,32 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\PageReplacementControl.cs">
+    <Compile Include="UserControls\PageReplacementControl\CLOCK.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\PageReplacementControl.Designer.cs">
-      <DependentUpon>PageReplacementControl.cs</DependentUpon>
+    <Compile Include="UserControls\PageReplacementControl\CLOCK.Designer.cs">
+      <DependentUpon>CLOCK.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\PageReplacementControl\FIFO.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PageReplacementControl\FIFO.Designer.cs">
+      <DependentUpon>FIFO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PageReplacementControl\LRU.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PageReplacementControl\LRU.Designer.cs">
+      <DependentUpon>LRU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PageReplacementControl\OPTimal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PageReplacementControl\OPTimal.Designer.cs">
+      <DependentUpon>OPTimal.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,8 +111,23 @@
     <EmbeddedResource Include="UserControls\BankerControl.resx">
       <DependentUpon>BankerControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CpuSchedulingControl.resx">
+      <DependentUpon>CpuSchedulingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DiskSchedulingControl.resx">
       <DependentUpon>DiskSchedulingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PageReplacementControl\CLOCK.resx">
+      <DependentUpon>CLOCK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PageReplacementControl\FIFO.resx">
+      <DependentUpon>FIFO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PageReplacementControl\LRU.resx">
+      <DependentUpon>LRU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PageReplacementControl\OPTimal.resx">
+      <DependentUpon>OPTimal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

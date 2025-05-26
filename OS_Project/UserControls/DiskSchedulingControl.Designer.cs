@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtFrom = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.lblDirection = new System.Windows.Forms.Label();
             this.lblAlgorithm = new System.Windows.Forms.Label();
@@ -42,9 +45,6 @@
             this.panelChart = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rtbResult = new System.Windows.Forms.RichTextBox();
-            this.txtFrom = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtTo = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,32 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Control";
+            // 
+            // txtTo
+            // 
+            this.txtTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTo.Location = new System.Drawing.Point(281, 145);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(43, 26);
+            this.txtTo.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(248, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(27, 20);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "To";
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFrom.Location = new System.Drawing.Point(203, 145);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(43, 26);
+            this.txtFrom.TabIndex = 11;
             // 
             // comboBox2
             // 
@@ -124,6 +150,7 @@
             this.btnRun.TabIndex = 6;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = false;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click_1);
             // 
             // lblDiskRange
             // 
@@ -142,6 +169,7 @@
             this.txtStartHead.Name = "txtStartHead";
             this.txtStartHead.Size = new System.Drawing.Size(121, 26);
             this.txtStartHead.TabIndex = 3;
+            this.txtStartHead.TextChanged += new System.EventHandler(this.txtStartHead_TextChanged);
             // 
             // lblStartHead
             // 
@@ -180,6 +208,7 @@
             this.panelChart.Name = "panelChart";
             this.panelChart.Size = new System.Drawing.Size(940, 359);
             this.panelChart.TabIndex = 1;
+            this.panelChart.Paint += new System.Windows.Forms.PaintEventHandler(this.panelChart_Paint_1);
             // 
             // groupBox2
             // 
@@ -201,32 +230,6 @@
             this.rtbResult.Size = new System.Drawing.Size(262, 256);
             this.rtbResult.TabIndex = 0;
             this.rtbResult.Text = "";
-            // 
-            // txtFrom
-            // 
-            this.txtFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFrom.Location = new System.Drawing.Point(203, 145);
-            this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(43, 26);
-            this.txtFrom.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(248, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "To";
-            // 
-            // txtTo
-            // 
-            this.txtTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTo.Location = new System.Drawing.Point(281, 145);
-            this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(43, 26);
-            this.txtTo.TabIndex = 13;
             // 
             // DiskSchedulingControl
             // 

@@ -310,5 +310,10 @@ namespace OS_Project
                     cell.Style.BackColor = Color.White;
             dgv.ClearSelection();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -8,10 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using OS_Project.UserControls.PageReplacementControl;
+
 namespace OS_Project
 {
     public partial class Main : Form
     {
+    
+
         public Main()
         {
             InitializeComponent();
@@ -23,7 +27,10 @@ namespace OS_Project
 
             tabControl.TabPages.Add(CreateTab("Banker Algorithm", new BankerControl()));
             tabControl.TabPages.Add(CreateTab("CPU Scheduling", new CpuSchedulingControl()));
-            tabControl.TabPages.Add(CreateTab("Page Replacement", new PageReplacementControl()));
+            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - FIFO" , new FIFO()));
+            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - CLOCK", new CLOCK()));
+            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - LRU", new LRU()));
+            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - OPTimal", new OPTimal()));
             tabControl.TabPages.Add(CreateTab("Disk Scheduling", new DiskSchedulingControl()));
 
             Controls.Add(tabControl);

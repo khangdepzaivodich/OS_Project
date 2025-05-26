@@ -700,6 +700,21 @@ namespace OS_Project
             lblDirection.Visible = showDirection;
             comboBox2.Visible = showDirection;
         }
+
+        private void txtStartHead_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelChart_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnRun_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

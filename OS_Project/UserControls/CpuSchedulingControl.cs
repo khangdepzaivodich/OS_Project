@@ -16,5 +16,10 @@ namespace OS_Project
         {
             InitializeComponent();
         }
+
+        private void CpuSchedulingControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
