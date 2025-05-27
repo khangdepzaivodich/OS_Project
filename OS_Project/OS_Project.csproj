@@ -58,10 +58,16 @@
     <Compile Include="UserControls\CpuSchedulingControl.Designer.cs">
       <DependentUpon>CpuSchedulingControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\DiskSchedulingControl.cs">
+    <Compile Include="UserControls\DiskSchedulingControl\Algorithms\CLOOK.cs" />
+    <Compile Include="UserControls\DiskSchedulingControl\Algorithms\CSCAN.cs" />
+    <Compile Include="UserControls\DiskSchedulingControl\Algorithms\FCFS.cs" />
+    <Compile Include="UserControls\DiskSchedulingControl\Algorithms\LOOK.cs" />
+    <Compile Include="UserControls\DiskSchedulingControl\Algorithms\SCAN.cs" />
+    <Compile Include="UserControls\DiskSchedulingControl\Algorithms\SSTF.cs" />
+    <Compile Include="UserControls\DiskSchedulingControl\DiskSchedulingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\DiskSchedulingControl.Designer.cs">
+    <Compile Include="UserControls\DiskSchedulingControl\DiskSchedulingControl.Designer.cs">
       <DependentUpon>DiskSchedulingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs">
@@ -114,7 +120,7 @@
     <EmbeddedResource Include="UserControls\CpuSchedulingControl.resx">
       <DependentUpon>CpuSchedulingControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\DiskSchedulingControl.resx">
+    <EmbeddedResource Include="UserControls\DiskSchedulingControl\DiskSchedulingControl.resx">
       <DependentUpon>DiskSchedulingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PageReplacementControl\CLOCK.resx">
@@ -142,5 +148,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

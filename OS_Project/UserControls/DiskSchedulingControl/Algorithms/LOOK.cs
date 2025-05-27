@@ -1,0 +1,112 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OS_Project.Algorithms
+{
+    public class LOOKAlgorithm
+    {
+        public class LOOKResult
+        {
+            public bool IsSuccess { get; set; }
+            public string ErrorMessage { get; set; }
+            public int TotalSeekTime { get; set; }
+            public List<string> Steps { get; set; }
+            public List<int> SeekSequence { get; set; }
+            public string Direction { get; set; }
+        }
+
+        public LOOKResult Run(string startHeadInput, string requestsInput, string directionInput)
+        {
+            if (string.IsNullOrWhiteSpace(startHeadInput))
+            {
+                return new LOOKResult { IsSuccess = false, ErrorMessage = "Vui lòng nhập vị trí đầu đọc ban đầu." };
+            }
+
+            if (string.IsNullOrWhiteSpace(requestsInput))
+            {
+                return new LOOKResult { IsSuccess = false, ErrorMessage = "Vui lòng nhập các Request." };
+            }
+
+            if (!int.TryParse(startHeadInput, out int start))
+            {
+                return new LOOKResult { IsSuccess = false, ErrorMessage = "Vị trí đầu đọc không hợp lệ." };
+            }
+
+            int[] requests;
+            try
+            {
+                requests = requestsInput.Split(',')
+                                        .Select(r => int.Parse(r.Trim()))
+                                        .ToArray();
+            }
+            catch
+            {
+                return new LOOKResult { IsSuccess = false, ErrorMessage = "Request không hợp lệ." };
+            }
+
+            if (requests.Length == 0)
+            {
+                return new LOOKResult { IsSuccess = false, ErrorMessage = "Vui lòng nhập các Request hợp lệ." };
+            }
+
+            string direction = directionInput;
+            int current = start;
+            int totalSeek = 0;
+            List<int> seekSequence = new List<int> { start };
+            List<string> steps = new List<string>();
+
+            Array.Sort(requests);
+            List<int> left = requests.Where(r => r < current).ToList();
+            List<int> right = requests.Where(r => r >= current).ToList();
+
+            if (direction == "Left")
+            {
+                left.Reverse();
+                foreach (int r in left)
+                {
+                    totalSeek += Math.Abs(current - r);
+                    steps.Add($"{current} → {r} ({Math.Abs(current - r)})");
+                    current = r;
+                    seekSequence.Add(current);
+                }
+                foreach (int r in right)
+                {
+                    totalSeek += Math.Abs(current - r);
+                    steps.Add($"{current} → {r} ({Math.Abs(current - r)})");
+                    current = r;
+                    seekSequence.Add(current);
+                }
+            }
+            else
+            {
+                foreach (int r in right)
+                {
+                    totalSeek += Math.Abs(current - r);
+                    steps.Add($"{current} → {r} ({Math.Abs(current - r)})");
+                    current = r;
+                    seekSequence.Add(current);
+                }
+                left.Reverse();
+                foreach (int r in left)
+                {
+                    totalSeek += Math.Abs(current - r);
+                    steps.Add($"{current} → {r} ({Math.Abs(current - r)})");
+                    current = r;
+                    seekSequence.Add(current);
+                }
+            }
+
+            return new LOOKResult
+            {
+                IsSuccess = true,
+                TotalSeekTime = totalSeek,
+                Steps = steps,
+                SeekSequence = seekSequence,
+                Direction = direction
+            };
+        }
+    }
+}

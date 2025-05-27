@@ -150,7 +150,7 @@
             this.btnRun.TabIndex = 6;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = false;
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click_1);
+            this.btnRun.Click += new System.EventHandler(this.BtnRun_Click);
             // 
             // lblDiskRange
             // 
@@ -169,7 +169,6 @@
             this.txtStartHead.Name = "txtStartHead";
             this.txtStartHead.Size = new System.Drawing.Size(121, 26);
             this.txtStartHead.TabIndex = 3;
-            this.txtStartHead.TextChanged += new System.EventHandler(this.txtStartHead_TextChanged);
             // 
             // lblStartHead
             // 
@@ -208,7 +207,6 @@
             this.panelChart.Name = "panelChart";
             this.panelChart.Size = new System.Drawing.Size(940, 359);
             this.panelChart.TabIndex = 1;
-            this.panelChart.Paint += new System.Windows.Forms.PaintEventHandler(this.panelChart_Paint_1);
             // 
             // groupBox2
             // 
