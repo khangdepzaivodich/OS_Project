@@ -46,18 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserControls\CpuSchedulingControl\Models\CpuProcess.cs" />
+    <Compile Include="UserControls\CpuSchedulingControl\CpuScheduling.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\CpuScheduling.Designer.cs">
+      <DependentUpon>CpuScheduling.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BankerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\BankerControl.Designer.cs">
       <DependentUpon>BankerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CpuSchedulingControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\CpuSchedulingControl.Designer.cs">
-      <DependentUpon>CpuSchedulingControl.cs</DependentUpon>
-    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\Schedulers\SchedulerAlgorithm.cs" />
     <Compile Include="UserControls\DiskSchedulingControl\Algorithms\CLOOK.cs" />
     <Compile Include="UserControls\DiskSchedulingControl\Algorithms\CSCAN.cs" />
     <Compile Include="UserControls\DiskSchedulingControl\Algorithms\FCFS.cs" />
@@ -102,6 +104,9 @@
     <Compile Include="UserControls\PageReplacementControl\OPTimal.Designer.cs">
       <DependentUpon>OPTimal.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControls\CpuSchedulingControl\CpuScheduling.resx">
+      <DependentUpon>CpuScheduling.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,9 +121,6 @@
     </Compile>
     <EmbeddedResource Include="UserControls\BankerControl.resx">
       <DependentUpon>BankerControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\CpuSchedulingControl.resx">
-      <DependentUpon>CpuSchedulingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DiskSchedulingControl\DiskSchedulingControl.resx">
       <DependentUpon>DiskSchedulingControl.cs</DependentUpon>
