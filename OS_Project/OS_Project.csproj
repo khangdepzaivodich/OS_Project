@@ -33,8 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>D:\Krypton-master\Bin\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,20 +50,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserControls\CpuSchedulingControl\Models\CpuProcess.cs" />
-    <Compile Include="UserControls\CpuSchedulingControl\CpuScheduling.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\CpuSchedulingControl\CpuScheduling.Designer.cs">
-      <DependentUpon>CpuScheduling.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\BankerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\BankerControl.Designer.cs">
       <DependentUpon>BankerControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CpuSchedulingControl\Schedulers\SchedulerAlgorithm.cs" />
+    <Compile Include="UserControls\CpuSchedulingControl\Algorithms\CPU-BASE.cs" />
+    <Compile Include="UserControls\CpuSchedulingControl\Algorithms\FCFS.cs" />
+    <Compile Include="UserControls\CpuSchedulingControl\Algorithms\Priority.cs" />
+    <Compile Include="UserControls\CpuSchedulingControl\Algorithms\ROUND-ROBIN.cs" />
+    <Compile Include="UserControls\CpuSchedulingControl\Algorithms\SJF.cs" />
+    <Compile Include="UserControls\CpuSchedulingControl\CPU-UI-UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\CPU-UI-UC.Designer.cs">
+      <DependentUpon>CPU-UI-UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\FCFS-UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\FCFS-UC.Designer.cs">
+      <DependentUpon>FCFS-UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\Priority-UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\Priority-UC.Designer.cs">
+      <DependentUpon>Priority-UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\ROUND-ROBIN-UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\ROUND-ROBIN-UC.Designer.cs">
+      <DependentUpon>ROUND-ROBIN-UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\SJF-UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\CpuSchedulingControl\SJF-UC.Designer.cs">
+      <DependentUpon>SJF-UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\DiskSchedulingControl\Algorithms\CLOOK.cs" />
     <Compile Include="UserControls\DiskSchedulingControl\Algorithms\CSCAN.cs" />
     <Compile Include="UserControls\DiskSchedulingControl\Algorithms\FCFS.cs" />
@@ -104,9 +135,12 @@
     <Compile Include="UserControls\PageReplacementControl\OPTimal.Designer.cs">
       <DependentUpon>OPTimal.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControls\CpuSchedulingControl\CpuScheduling.resx">
-      <DependentUpon>CpuScheduling.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="UserControls\PageReplacementControl\PAGE-UI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PageReplacementControl\PAGE-UI.Designer.cs">
+      <DependentUpon>PAGE-UI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +156,21 @@
     <EmbeddedResource Include="UserControls\BankerControl.resx">
       <DependentUpon>BankerControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CpuSchedulingControl\CPU-UI-UC.resx">
+      <DependentUpon>CPU-UI-UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CpuSchedulingControl\FCFS-UC.resx">
+      <DependentUpon>FCFS-UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CpuSchedulingControl\Priority-UC.resx">
+      <DependentUpon>Priority-UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CpuSchedulingControl\ROUND-ROBIN-UC.resx">
+      <DependentUpon>ROUND-ROBIN-UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\CpuSchedulingControl\SJF-UC.resx">
+      <DependentUpon>SJF-UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\DiskSchedulingControl\DiskSchedulingControl.resx">
       <DependentUpon>DiskSchedulingControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\PageReplacementControl\OPTimal.resx">
       <DependentUpon>OPTimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PageReplacementControl\PAGE-UI.resx">
+      <DependentUpon>PAGE-UI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using OS_Project.CpuSchedulingControl.cs;
+using OS_Project.UserControls.CpuSchedulingControl;
 using OS_Project.UserControls.PageReplacementControl;
 
 namespace OS_Project
@@ -26,11 +26,8 @@ namespace OS_Project
             };
 
             tabControl.TabPages.Add(CreateTab("Banker Algorithm", new BankerControl()));
-            tabControl.TabPages.Add(CreateTab("CPU Scheduling", new CpuScheduling()));
-            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - FIFO" , new FIFO()));
-            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - CLOCK", new CLOCK()));
-            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - LRU", new LRU()));
-            tabControl.TabPages.Add(CreateTab("PAGE_REPLACEMENT - OPTimal", new OPTimal()));
+            tabControl.TabPages.Add(CreateTab("CPU Scheduling", new CPU_UI_UC()));
+            tabControl.TabPages.Add(CreateTab("VIRTUAL-MEMORY" , new PAGE_UI()));
             tabControl.TabPages.Add(CreateTab("Disk Scheduling", new DiskSchedulingControl()));
 
             Controls.Add(tabControl);
