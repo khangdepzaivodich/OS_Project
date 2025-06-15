@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.kryptonManager1 = new ComponentFactory.Krypton.Toolkit.KryptonManager(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOPTimal = new System.Windows.Forms.Button();
             this.btnLRU = new System.Windows.Forms.Button();
@@ -136,8 +134,6 @@
         }
 
         #endregion
-
-        private ComponentFactory.Krypton.Toolkit.KryptonManager kryptonManager1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnOPTimal;
         private System.Windows.Forms.Button btnLRU;
