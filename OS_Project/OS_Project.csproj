@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Semaphores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Semaphores.Designer.cs">
+      <DependentUpon>Semaphores.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BankerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

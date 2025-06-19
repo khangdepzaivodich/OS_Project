@@ -19,7 +19,7 @@ namespace OS_Project
         public Main()
         {
             InitializeComponent();
-
+            this.BackColor = Color.White;
             var tabControl = new TabControl
             {
                 Dock = DockStyle.Fill
@@ -29,7 +29,16 @@ namespace OS_Project
             tabControl.TabPages.Add(CreateTab("CPU Scheduling", new CPU_UI_UC()));
             tabControl.TabPages.Add(CreateTab("Page-Replacement" , new PAGE_UI()));
             tabControl.TabPages.Add(CreateTab("Disk Scheduling", new DiskSchedulingControl()));
-
+            var semTab = new TabPage("Semaphores");
+            var semForm = new Semaphores()
+            {
+                TopLevel = false,                   // bắt buộc để nhúng form vào control khác
+                FormBorderStyle = FormBorderStyle.None,
+                Dock = DockStyle.Fill
+            };
+            semTab.Controls.Add(semForm);
+            semForm.Show();                        // nhớ gọi Show() để render
+            tabControl.TabPages.Add(semTab);
             Controls.Add(tabControl);
         }
 

@@ -16,9 +16,6 @@ namespace OS_Project.UserControls.PageReplacementControl
         {
             InitializeComponent();
         }
-
-
-
         private void BtnReset_Click(object sender, EventArgs e)
         {
             // Xóa bảng hiển thị
@@ -90,10 +87,6 @@ namespace OS_Project.UserControls.PageReplacementControl
                 DGV.Columns.Add($"col{i}", pages[i].ToString());
 
             DGV.RowCount = frameCount + 1;
-
-            // Bỏ đặt tên cho hàng đầu (Frame 1, Frame 2 ...)
-            // Nếu bạn vẫn muốn đặt tên hàng, có thể dùng DGV.RowHeadersVisible = true;
-
             // Nếu RowHeaders có hiển thị, ta có thể để trống header hoặc đặt tên tùy ý
             DGV.RowHeadersVisible = false;
 
@@ -145,28 +138,21 @@ namespace OS_Project.UserControls.PageReplacementControl
                 frameHistory.Add(current);
                 faults.Add(isFault ? "F" : "");
             }
+            DGV.RowHeadersVisible = false;
 
-            // Đổ dữ liệu lên DataGridView
+            // Đổ dữ liệu lên DGV như bạn đã có…
             for (int r = 0; r < frameCount; r++)
-            {
                 for (int c = 0; c < pages.Count; c++)
-                {
-                    int val = frameHistory[c][r];
-                    DGV.Rows[r].Cells[c].Value = val == 0 ? "" : val.ToString();
-                }
-            }
+                    DGV.Rows[r].Cells[c].Value = frameHistory[c][r] == 0 ? "" : frameHistory[c][r].ToString();
 
-            // Hàng cuối cùng là fault
-            DGV.Rows[frameCount].Height = 25; // chỉnh cho vừa nhìn
+            DGV.Rows[frameCount].Height = 25;
             for (int c = 0; c < pages.Count; c++)
-            {
                 DGV.Rows[frameCount].Cells[c].Value = faults[c];
-            }
 
             lblFaults.Text = $"Page Faults: {pageFaults}";
-            DGV.Enabled = false;
             DGV.ClearSelection();
             DGV.CurrentCell = null;
+
         }
 
 

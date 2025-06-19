@@ -37,7 +37,6 @@ namespace OS_Project.UserControls.CpuSchedulingControl.Algorithms
         private void RunNonPreemptive()
         {
             var currentTime = 0;
-
             while (InputProcesses.Count > 0)
             {
                 var available = InputProcesses.Where(a => a.ArrivalTime <= currentTime).ToList();

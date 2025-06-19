@@ -241,9 +241,6 @@ namespace OS_Project.UserControls.CpuSchedulingControl
             // Hoặc cập nhật lại DataGridView nếu bạn đang hiển thị trên lưới:
             foreach (var p in scheduler.ResultProcesses)
             {
-               
-                PWaitTime.Visible = true;  
-                PTurnAroundTime.Visible = true;
                 foreach (DataGridViewRow row in ProDGV.Rows)
                 {
                     if (Convert.ToInt32(row.Cells[0].Value) == p.Id)
@@ -254,6 +251,8 @@ namespace OS_Project.UserControls.CpuSchedulingControl
                     }
                 }
             }
+            //PWaitTime.Visible = true;
+            //PTurnAroundTime.Visible = true;
             double avgWait = scheduler.ResultProcesses.Average(p => p.WaitTime);
             double avgTAT = scheduler.ResultProcesses.Average(p => p.TurnAroundTime);
 
@@ -267,8 +266,8 @@ namespace OS_Project.UserControls.CpuSchedulingControl
         private void BtnReset_Click(object sender, EventArgs e)
         {
          
-            PWaitTime.Visible = false;
-            PTurnAroundTime.Visible = false;
+            //PWaitTime.Visible = false;
+            //PTurnAroundTime.Visible = false;
             ProDGV.Rows.Clear();
             pnlGanttContainer.Controls.Clear();
             VisualiseProDGV(false);
