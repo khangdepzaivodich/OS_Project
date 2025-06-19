@@ -53,8 +53,9 @@ namespace OS_Project.UserControls.PageReplacementControl
                 return;
             }
 
-            string[] parts = input.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            List<int> pages = new List<int>();
+            string[] parts = input
+                .Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var pages = new List<int>();
             try
             {
                 foreach (var p in parts)
@@ -73,87 +74,93 @@ namespace OS_Project.UserControls.PageReplacementControl
                 return;
             }
 
-            HashSet<int> frames = new HashSet<int>(frameCount);
-            Queue<int> fifoQueue = new Queue<int>();
-
+            // 2. Khởi tạo cấu trúc FIFO
+            var frames = new HashSet<int>(frameCount);
+            var fifoQueue = new Queue<int>();
             int pageFaults = 0;
+            int pageHits = 0;
 
-            // Setup DataGridView
+            // 3. Chuẩn bị DataGridView
             DGV.Rows.Clear();
             DGV.Columns.Clear();
-
-            // Bỏ cột "String" - chỉ tạo cột theo số lượng trang
             for (int i = 0; i < pages.Count; i++)
                 DGV.Columns.Add($"col{i}", pages[i].ToString());
 
             DGV.RowCount = frameCount + 1;
-            // Nếu RowHeaders có hiển thị, ta có thể để trống header hoặc đặt tên tùy ý
             DGV.RowHeadersVisible = false;
 
-            List<int[]> frameHistory = new List<int[]>();
-            List<string> faults = new List<string>();
+            // Lưu lại lịch sử frame + đánh dấu F
+            var frameHistory = new List<int[]>();
+            var faults = new List<string>();
 
-            foreach (int page in pages)
+            // 4. Chạy thuật toán FIFO
+            foreach (var page in pages)
             {
+                bool isHit = frames.Contains(page);
                 bool isFault = false;
 
-                if (frames.Count < frameCount)
+                if (isHit)
                 {
-                    if (!frames.Contains(page))
-                    {
-                        frames.Add(page);
-                        fifoQueue.Enqueue(page);
-                        pageFaults++;
-                        isFault = false; // chưa full frame thì không đánh dấu F
-                    }
-                    else
-                    {
-                        isFault = false;
-                    }
+                    // Hit thì tăng đếm
+                    pageHits++;
                 }
                 else
                 {
-                    if (!frames.Contains(page))
+                    // Miss
+                    if (frames.Count < frameCount)
                     {
+                        // Chưa full ⇒ chỉ nạp, không fault
+                        frames.Add(page);
+                        fifoQueue.Enqueue(page);
+                    }
+                    else
+                    {
+                        // Full ⇒ phải thay thế
                         int removed = fifoQueue.Dequeue();
                         frames.Remove(removed);
 
                         frames.Add(page);
                         fifoQueue.Enqueue(page);
+
                         pageFaults++;
-                        isFault = true; // full frame + fault -> đánh dấu F
-                    }
-                    else
-                    {
-                        isFault = false;
+                        isFault = true;
                     }
                 }
 
-                int[] current = new int[frameCount];
+                // Ghi lại trạng thái hiện tại của các frame
+                var snapshot = new int[frameCount];
                 int idx = 0;
-                foreach (int f in fifoQueue)
-                {
-                    current[idx++] = f;
-                }
-                frameHistory.Add(current);
+                foreach (var f in fifoQueue)
+                    snapshot[idx++] = f;
+                frameHistory.Add(snapshot);
+
+                // Ghi lại F hay không
                 faults.Add(isFault ? "F" : "");
             }
-            DGV.RowHeadersVisible = false;
 
-            // Đổ dữ liệu lên DGV như bạn đã có…
+            // 5. Đổ lịch sử ra DataGridView
             for (int r = 0; r < frameCount; r++)
+            {
                 for (int c = 0; c < pages.Count; c++)
-                    DGV.Rows[r].Cells[c].Value = frameHistory[c][r] == 0 ? "" : frameHistory[c][r].ToString();
+                {
+                    int v = frameHistory[c][r];
+                    DGV.Rows[r].Cells[c].Value = v == 0 ? "" : v.ToString();
+                }
+            }
 
-            DGV.Rows[frameCount].Height = 25;
+            // Hàng Fault
             for (int c = 0; c < pages.Count; c++)
                 DGV.Rows[frameCount].Cells[c].Value = faults[c];
 
+            // 6. Hiển thị kết quả
             lblFaults.Text = $"Page Faults: {pageFaults}";
+            lblHits.Text = $"Page Hits: {pageHits}";
+            lblFaults.Visible = lblHits.Visible = true;
+
             DGV.ClearSelection();
             DGV.CurrentCell = null;
-
         }
+
 
 
     }

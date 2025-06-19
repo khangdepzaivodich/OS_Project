@@ -15,111 +15,141 @@ namespace OS_Project.UserControls.PageReplacementControl
         public LRU()
         {
             InitializeComponent();
+
+            // --- Style DataGridView cho nền trắng như ảnh gốc ---
+            DGV.EnableHeadersVisualStyles = false;
+            DGV.BackgroundColor = Color.White;
+            DGV.DefaultCellStyle.BackColor = Color.White;
+            DGV.DefaultCellStyle.ForeColor = Color.Black;
+
+            DGV.ColumnHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            DGV.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            DGV.RowHeadersDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            DGV.RowHeadersDefaultCellStyle.ForeColor = Color.Black;
+
+            DGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            DGV.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+
+            lblFaults.Visible = lblHits.Visible = false;
+        }
+        private void BtnReset_Click(object sender, EventArgs e)
+        {
+            // Xóa bảng hiển thị
+            DGV.DataSource = null;
+            DGV.Rows.Clear();
+            DGV.Columns.Clear();
+
+            // Đặt lại các label
+            lblHits.Text = "Hits:";
+            lblFaults.Text = "Page Faults:";
+            lblTime.Text = "Time:";
+
+            lblHits.Visible = false;
+            lblFaults.Visible = false;
+            lblTime.Visible = false;
+
+            // Reset ô nhập chuỗi và số khung
+            txtInputString.Text = "";
+            NumFramesCount.Value = 0;
+
+            // Cho phép nhập lại
+            GbInput.Enabled = true;
+            BtnStart.Enabled = true;
         }
 
         private void BtnStart_Click(object sender, EventArgs e)
         {
-            // 1. Lấy input
-            string input = txtInputString.Text.Trim();
-            if (string.IsNullOrEmpty(input))
+            // 1. Lấy và parse input
+            var raw = txtInputString.Text.Trim();
+            if (string.IsNullOrEmpty(raw))
             {
                 MessageBox.Show("Vui lòng nhập chuỗi trang, ví dụ: 7, 0, 1, 2, 0, 3...");
                 return;
             }
 
-            string[] parts = input.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            List<int> pages = new List<int>();
-            try
+            string[] parts = raw.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var pages = new List<int>();
+            foreach (var p in parts)
             {
-                foreach (string part in parts)
+                if (!int.TryParse(p, out var x))
                 {
-                    pages.Add(int.Parse(part));
+                    MessageBox.Show("Chuỗi nhập không hợp lệ. Chỉ nhập số cách nhau bằng dấu phẩy hoặc khoảng trắng.");
+                    return;
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Chuỗi nhập không hợp lệ. Chỉ nhập số cách nhau bằng dấu phẩy hoặc khoảng trắng.");
-                return;
+                pages.Add(x);
             }
 
             int frameCount = (int)NumFramesCount.Value;
-            if (frameCount <= 0)
+            if (frameCount < 1)
             {
                 MessageBox.Show("Số khung trang phải lớn hơn 0.");
                 return;
             }
 
-            // 2. Khởi tạo cấu trúc: dùng List để duy trì thứ tự frame
-            List<int> framePages = new List<int>();
-            Dictionary<int, int> lastUsed = new Dictionary<int, int>();
+            // 2. Khởi tạo cấu trúc
+            var framePages = new List<int>();               // danh sách các trang hiện trong frame
+            var lastUsed = new Dictionary<int, int>();      // thời điểm truy cập cuối của từng page
             int pageFaults = 0;
             int pageHits = 0;
 
             // 3. Chuẩn bị DataGridView
             DGV.Rows.Clear();
             DGV.Columns.Clear();
+
             for (int i = 0; i < pages.Count; i++)
-            {
-                DGV.Columns.Add("col" + i, pages[i].ToString());
-            }
+                DGV.Columns.Add("c" + i, pages[i].ToString());
+
+            // Thêm các hàng: frame 1..frameCount, rồi hàng Fault
             DGV.RowCount = frameCount + 1;
             for (int r = 0; r < frameCount; r++)
-            {
                 DGV.Rows[r].HeaderCell.Value = "Frame " + (r + 1);
-            }
             DGV.Rows[frameCount].HeaderCell.Value = "Fault";
 
-            // 4. Mô phỏng thuật toán LRU
+            // 4. Mô phỏng LRU
             for (int i = 0; i < pages.Count; i++)
             {
                 int page = pages[i];
                 bool hit = framePages.Contains(page);
-                bool isFault = false;
 
-                if (!hit)
+                if (hit)
                 {
-                    // Nếu chưa đầy frame thì chưa phải fault thay thế
-                    if (framePages.Count < frameCount)
-                    {
-                        framePages.Add(page);
-                        pageFaults++;
-                        isFault = false; // chưa full, chưa thay thế thì không đánh F
-                    }
-                    else
-                    {
-                        // Full rồi, thay thế trang theo LRU
-                        int lru = int.MaxValue;
-                        int pageToRemove = -1;
-                        for (int j = 0; j < framePages.Count; j++)
-                        {
-                            int p = framePages[j];
-                            if (lastUsed[p] < lru)
-                            {
-                                lru = lastUsed[p];
-                                pageToRemove = p;
-                            }
-                        }
-
-                        if (pageToRemove != -1)
-                        {
-                            framePages.Remove(pageToRemove);
-                        }
-                        framePages.Add(page);
-                        pageFaults++;
-                        isFault = true; // đã full và thay thế -> fault thật sự
-                    }
-                    DGV.Rows[frameCount].Cells[i].Value = isFault ? "F" : "";
+                    // nếu đã có → hit
+                    pageHits++;
+                    // không đánh F
                 }
                 else
                 {
-                    pageHits++;
-                    DGV.Rows[frameCount].Cells[i].Value = "";
+                    if (framePages.Count < frameCount)
+                    {
+                        // nạp vào frame trống (chưa full) → không replacement
+                        framePages.Add(page);
+                    }
+                    else
+                    {
+                        // full rồi → tìm và thay thế LRU
+                        int lruTime = int.MaxValue, lruPage = framePages[0];
+                        foreach (var p in framePages)
+                        {
+                            if (lastUsed[p] < lruTime)
+                            {
+                                lruTime = lastUsed[p];
+                                lruPage = p;
+                            }
+                        }
+                        // thay thế
+                        framePages.Remove(lruPage);
+                        framePages.Add(page);
+
+                        // đánh dấu F
+                        pageFaults++;
+                        DGV.Rows[frameCount].Cells[i].Value = "F";
+                    }
                 }
 
-                // Cập nhật thời gian sử dụng
+                // cập nhật thời điểm cuối cùng trang này được dùng
                 lastUsed[page] = i;
 
-                // 5. Cập nhật trạng thái frame cố định theo thứ tự framePages
+                // 5. Điền trạng thái frame vào mỗi ô (cột)
                 for (int r = 0; r < frameCount; r++)
                 {
                     if (r < framePages.Count)
@@ -129,17 +159,15 @@ namespace OS_Project.UserControls.PageReplacementControl
                 }
             }
 
-            // 6. Hiển thị kết quả cuối
-            lblFaults.Visible = true;
-            lblHits.Visible = true;
-            lblFaults.Text = "Page Faults: " + pageFaults;
-            lblHits.Text = "Page Hits: " + pageHits;
+            // 6. Hiển thị kết quả
+            lblFaults.Text = $"Page Faults: {pageFaults}";
+            lblHits.Text = $"Page Hits: {pageHits}";
+            lblFaults.Visible = lblHits.Visible = true;
+
+            // khoá DataGridView lại và clear chọn
             DGV.Enabled = false;
             DGV.ClearSelection();
             DGV.CurrentCell = null;
         }
-
-
-
     }
 }
