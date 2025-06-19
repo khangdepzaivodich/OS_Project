@@ -69,8 +69,7 @@ namespace OS_Project.Algorithms
                 if (left.Count > 0 && right.Count > 0)
                 {
                     int lastRight = right.Last();
-                    totalSeek += Math.Abs(current - lastRight);
-                    steps.Add($"{current} → {lastRight} ({Math.Abs(current - lastRight)})");
+                    steps.Add($"{current} → {lastRight} (0)");
                     current = lastRight;
                     seekSequence.Add(current);
                     right.RemoveAt(right.Count - 1);
@@ -98,8 +97,7 @@ namespace OS_Project.Algorithms
                 if (right.Count > 0 && left.Count > 0)
                 {
                     int firstLeft = left.First();
-                    totalSeek += Math.Abs(current - firstLeft);
-                    steps.Add($"{current} → {firstLeft} ({Math.Abs(current - firstLeft)})");
+                    steps.Add($"{current} → {firstLeft} (0)");
                     current = firstLeft;
                     seekSequence.Add(current);
                     left.RemoveAt(0);
@@ -113,6 +111,7 @@ namespace OS_Project.Algorithms
                     seekSequence.Add(current);
                 }
             }
+
 
             return new CLOOKResult
             {
