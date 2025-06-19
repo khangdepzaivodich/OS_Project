@@ -119,6 +119,7 @@ namespace OS_Project
 
             ResetHighlight(dgvAvailable);
             ResetHighlight(dgvNeed);
+            ResetHighlight(dgvAllocation);
 
             if (!safe)
                 lblStatus.Text = "System is NOT in a safe state!";
@@ -233,7 +234,8 @@ namespace OS_Project
             int[,] need = CalculateNeedMatrix(allocation, max);
 
             var safeSequence = new System.Collections.Generic.List<int>();
-            HighlightRow(dgvAvailable, 0, Color.LightCyan);
+            bool[] doneHighlight = new bool[n];
+
             for (int count = 0; count < n; count++)
             {
                 bool found = false;
@@ -242,7 +244,6 @@ namespace OS_Project
                     if (!finish[p])
                     {
                         HighlightRow(dgvNeed, p, Color.LightYellow);
-                        
 
                         bool canProceed = true;
                         for (int r = 0; r < m; r++)
@@ -258,6 +259,12 @@ namespace OS_Project
 
                         if (canProceed)
                         {
+                            HighlightRow(dgvNeed, p, Color.LightGreen);
+                            HighlightRow(dgvAllocation, p, Color.LightGreen);
+                            HighlightRow(dgvAvailable, 0, Color.LightGreen);
+
+                            await Task.Delay(1000);
+
                             for (int r = 0; r < m; r++)
                                 work[r] += allocation[p, r];
                             finish[p] = true;
@@ -266,8 +273,10 @@ namespace OS_Project
                                 availableTable.Rows[0][j] = work[j];
 
                             safeSequence.Add(p);
+                            HighlightRow(dgvNeed, p, Color.LightGray);
+                            HighlightRow(dgvAllocation, p, Color.LightGray);
+                            doneHighlight[p] = true;
 
-                            ResetHighlight(dgvNeed);
                             ResetHighlight(dgvAvailable);
 
                             found = true;
@@ -276,6 +285,14 @@ namespace OS_Project
 
                         ResetHighlight(dgvNeed);
                         ResetHighlight(dgvAvailable);
+                        for (int i = 0; i < n; i++)
+                        {
+                            if (doneHighlight[i])
+                            {
+                                HighlightRow(dgvNeed, i, Color.LightGray);
+                                HighlightRow(dgvAllocation, i, Color.LightGray);
+                            }
+                        }
                     }
                 }
                 if (!found)

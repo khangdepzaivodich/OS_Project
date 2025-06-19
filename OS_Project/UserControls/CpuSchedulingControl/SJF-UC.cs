@@ -252,8 +252,8 @@ namespace OS_Project.UserControls.CpuSchedulingControl
                     }
                 }
             }
-            double avgWait = scheduler.ResultProcesses.Average(p => p.WaitTime);
-            double avgTAT = scheduler.ResultProcesses.Average(p => p.TurnAroundTime);
+            double avgWait = scheduler.ResultProcesses.Sum(p => p.WaitTime)/ProDGV.RowCount;
+            double avgTAT = scheduler.ResultProcesses.Sum(p => p.TurnAroundTime) /ProDGV.RowCount;
 
             lblAVGWait.Text = $"Avg Wait Time: {avgWait:F2}";
             lblAVGTA.Text = $"Avg Turnaround Time: {avgTAT:F2}";

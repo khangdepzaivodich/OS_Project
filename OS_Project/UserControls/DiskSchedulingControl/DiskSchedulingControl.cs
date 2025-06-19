@@ -28,6 +28,7 @@ namespace OS_Project
                 "C-SCAN",
                 "C-LOOK"
             });
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.SelectedIndex = 0;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             comboBox2.Items.AddRange(new string[]
@@ -35,12 +36,14 @@ namespace OS_Project
                 "Left",
                 "Right"
             });
+            comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox2.SelectedIndex = 0;
-
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             btnRun.Click += BtnRun_Click;
             panelChart.Paint += PanelChart_Paint;
             rtbResult.Font = new Font("Arial", 10);
         }
+
         private void BtnRun_Click(object sender, EventArgs e)
         {
             string algorithm = comboBox1.SelectedItem.ToString();
@@ -282,6 +285,15 @@ namespace OS_Project
             bool showDirection = (selected == "SCAN" || selected == "LOOK" || selected == "C-SCAN" || selected == "C-LOOK");
             lblDirection.Visible = showDirection;
             comboBox2.Visible = showDirection;
+            lastSeekSequence.Clear();
+            rtbResult.Clear();
+            panelChart.Invalidate();
+        }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lastSeekSequence.Clear();
+            rtbResult.Clear();
+            panelChart.Invalidate();
         }
     }
 }
