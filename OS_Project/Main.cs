@@ -19,7 +19,7 @@ namespace OS_Project
         public Main()
         {
             InitializeComponent();
-            this.BackColor = Color.White;
+            this.BackColor = Color.WhiteSmoke;
             var tabControl = new TabControl
             {
                 Dock = DockStyle.Fill

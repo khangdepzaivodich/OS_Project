@@ -114,30 +114,34 @@
             // 
             this.PName.DataPropertyName = "Name";
             this.PName.HeaderText = "Name";
+            this.PName.MinimumWidth = 6;
             this.PName.Name = "PName";
             this.PName.ReadOnly = true;
-            this.PName.Width = 120;
+            this.PName.Width = 146;
             // 
             // PArrivalTime
             // 
             this.PArrivalTime.DataPropertyName = "ArrivalTime";
             this.PArrivalTime.HeaderText = "Arrival Time";
+            this.PArrivalTime.MinimumWidth = 6;
             this.PArrivalTime.Name = "PArrivalTime";
             this.PArrivalTime.ReadOnly = true;
-            this.PArrivalTime.Width = 192;
+            this.PArrivalTime.Width = 237;
             // 
             // PBurstTime
             // 
             this.PBurstTime.DataPropertyName = "BurstTime";
             this.PBurstTime.HeaderText = "Burst Time";
+            this.PBurstTime.MinimumWidth = 6;
             this.PBurstTime.Name = "PBurstTime";
             this.PBurstTime.ReadOnly = true;
-            this.PBurstTime.Width = 179;
+            this.PBurstTime.Width = 219;
             // 
             // PPriority
             // 
             this.PPriority.DataPropertyName = "Priority";
             this.PPriority.HeaderText = "Priority";
+            this.PPriority.MinimumWidth = 6;
             this.PPriority.Name = "PPriority";
             this.PPriority.ReadOnly = true;
             this.PPriority.Visible = false;
@@ -147,6 +151,7 @@
             // 
             this.PStartTime.DataPropertyName = "StartTime";
             this.PStartTime.HeaderText = "Start Time";
+            this.PStartTime.MinimumWidth = 6;
             this.PStartTime.Name = "PStartTime";
             this.PStartTime.ReadOnly = true;
             this.PStartTime.Visible = false;
@@ -156,6 +161,7 @@
             // 
             this.PFinishTime.DataPropertyName = "FinishTime";
             this.PFinishTime.HeaderText = "Finish Time";
+            this.PFinishTime.MinimumWidth = 6;
             this.PFinishTime.Name = "PFinishTime";
             this.PFinishTime.ReadOnly = true;
             this.PFinishTime.Visible = false;
@@ -165,6 +171,7 @@
             // 
             this.PWaitTime.DataPropertyName = "WaitTime";
             this.PWaitTime.HeaderText = "Wait Time";
+            this.PWaitTime.MinimumWidth = 6;
             this.PWaitTime.Name = "PWaitTime";
             this.PWaitTime.ReadOnly = true;
             this.PWaitTime.Visible = false;
@@ -174,6 +181,7 @@
             // 
             this.PId.DataPropertyName = "Id";
             this.PId.HeaderText = "Id";
+            this.PId.MinimumWidth = 6;
             this.PId.Name = "PId";
             this.PId.ReadOnly = true;
             this.PId.Visible = false;
@@ -183,6 +191,7 @@
             // 
             this.PTurnAroundTime.DataPropertyName = "TurnAroundTime";
             this.PTurnAroundTime.HeaderText = "TA Time";
+            this.PTurnAroundTime.MinimumWidth = 6;
             this.PTurnAroundTime.Name = "PTurnAroundTime";
             this.PTurnAroundTime.ReadOnly = true;
             this.PTurnAroundTime.Visible = false;
@@ -192,6 +201,7 @@
             // 
             this.PRemainingTime.DataPropertyName = "RemainingTime";
             this.PRemainingTime.HeaderText = "Remaining Time";
+            this.PRemainingTime.MinimumWidth = 6;
             this.PRemainingTime.Name = "PRemainingTime";
             this.PRemainingTime.ReadOnly = true;
             this.PRemainingTime.Visible = false;
@@ -205,7 +215,7 @@
             this.lblAVGWait.ForeColor = System.Drawing.Color.White;
             this.lblAVGWait.Location = new System.Drawing.Point(0, 25);
             this.lblAVGWait.Name = "lblAVGWait";
-            this.lblAVGWait.Size = new System.Drawing.Size(160, 24);
+            this.lblAVGWait.Size = new System.Drawing.Size(202, 29);
             this.lblAVGWait.TabIndex = 22;
             this.lblAVGWait.Text = "Wait Time AVG = ";
             this.lblAVGWait.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -230,9 +240,9 @@
             this.CheckBoxPreemptive.AutoSize = true;
             this.CheckBoxPreemptive.BackColor = System.Drawing.Color.Black;
             this.CheckBoxPreemptive.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.CheckBoxPreemptive.Location = new System.Drawing.Point(777, 37);
+            this.CheckBoxPreemptive.Location = new System.Drawing.Point(736, 29);
             this.CheckBoxPreemptive.Name = "CheckBoxPreemptive";
-            this.CheckBoxPreemptive.Size = new System.Drawing.Size(170, 35);
+            this.CheckBoxPreemptive.Size = new System.Drawing.Size(211, 43);
             this.CheckBoxPreemptive.TabIndex = 25;
             this.CheckBoxPreemptive.Text = "Preemptive";
             this.CheckBoxPreemptive.UseVisualStyleBackColor = false;
@@ -246,7 +256,7 @@
             this.lblTime.ForeColor = System.Drawing.Color.White;
             this.lblTime.Location = new System.Drawing.Point(248, 25);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(233, 24);
+            this.lblTime.Size = new System.Drawing.Size(304, 29);
             this.lblTime.TabIndex = 24;
             this.lblTime.Text = "Estimated Time = {time}ms";
             this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -260,7 +270,7 @@
             this.lblAVGTA.ForeColor = System.Drawing.Color.White;
             this.lblAVGTA.Location = new System.Drawing.Point(3, 60);
             this.lblAVGTA.Name = "lblAVGTA";
-            this.lblAVGTA.Size = new System.Drawing.Size(230, 24);
+            this.lblAVGTA.Size = new System.Drawing.Size(288, 29);
             this.lblAVGTA.TabIndex = 23;
             this.lblAVGTA.Text = "Turnarround Time AVG = ";
             this.lblAVGTA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -289,6 +299,7 @@
             // 
             this.PIsWorking.DataPropertyName = "IsWorking";
             this.PIsWorking.HeaderText = "IsWorking";
+            this.PIsWorking.MinimumWidth = 6;
             this.PIsWorking.Name = "PIsWorking";
             this.PIsWorking.ReadOnly = true;
             this.PIsWorking.Visible = false;
@@ -305,11 +316,12 @@
             this.dataGridViewTextBoxColumn1.FillWeight = 98.48485F;
             this.dataGridViewTextBoxColumn1.HeaderText = " ";
             this.dataGridViewTextBoxColumn1.MaxInputLength = 10;
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 5;
+            this.dataGridViewTextBoxColumn1.Width = 6;
             // 
             // ProDGV
             // 
@@ -359,6 +371,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ProDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ProDGV.RowHeadersVisible = false;
+            this.ProDGV.RowHeadersWidth = 51;
             this.ProDGV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -415,12 +428,12 @@
             this.tlpProDataMain.Controls.Add(this.tlpProFields, 0, 0);
             this.tlpProDataMain.Controls.Add(this.GbGanttChart, 1, 0);
             this.tlpProDataMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpProDataMain.Location = new System.Drawing.Point(3, 34);
+            this.tlpProDataMain.Location = new System.Drawing.Point(3, 41);
             this.tlpProDataMain.Name = "tlpProDataMain";
             this.tlpProDataMain.RowCount = 1;
             this.tlpProDataMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpProDataMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 411F));
-            this.tlpProDataMain.Size = new System.Drawing.Size(1342, 411);
+            this.tlpProDataMain.Size = new System.Drawing.Size(1342, 404);
             this.tlpProDataMain.TabIndex = 0;
             // 
             // tlpProFields
@@ -443,15 +456,15 @@
             this.tlpProFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
             this.tlpProFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
             this.tlpProFields.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
-            this.tlpProFields.Size = new System.Drawing.Size(665, 405);
+            this.tlpProFields.Size = new System.Drawing.Size(665, 398);
             this.tlpProFields.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 270);
+            this.label3.Location = new System.Drawing.Point(3, 264);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(193, 135);
+            this.label3.Size = new System.Drawing.Size(193, 134);
             this.label3.TabIndex = 3;
             this.label3.Text = "Burst time*";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -459,9 +472,9 @@
             // label2
             // 
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 135);
+            this.label2.Location = new System.Drawing.Point(3, 132);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(193, 135);
+            this.label2.Size = new System.Drawing.Size(193, 132);
             this.label2.TabIndex = 2;
             this.label2.Text = "Arrival time";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -484,7 +497,7 @@
             this.tlpProButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpProButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpProButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpProButtons.Size = new System.Drawing.Size(194, 399);
+            this.tlpProButtons.Size = new System.Drawing.Size(194, 392);
             this.tlpProButtons.TabIndex = 4;
             // 
             // BtnClear
@@ -497,10 +510,10 @@
             this.BtnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.BtnClear.ForeColor = System.Drawing.Color.White;
-            this.BtnClear.Location = new System.Drawing.Point(5, 302);
+            this.BtnClear.Location = new System.Drawing.Point(5, 299);
             this.BtnClear.Margin = new System.Windows.Forms.Padding(5);
             this.BtnClear.Name = "BtnClear";
-            this.BtnClear.Size = new System.Drawing.Size(184, 92);
+            this.BtnClear.Size = new System.Drawing.Size(184, 88);
             this.BtnClear.TabIndex = 7;
             this.BtnClear.Text = "Clear";
             this.BtnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -517,10 +530,10 @@
             this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.BtnDelete.ForeColor = System.Drawing.Color.White;
-            this.BtnDelete.Location = new System.Drawing.Point(5, 203);
+            this.BtnDelete.Location = new System.Drawing.Point(5, 201);
             this.BtnDelete.Margin = new System.Windows.Forms.Padding(5);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(184, 89);
+            this.BtnDelete.Size = new System.Drawing.Size(184, 88);
             this.BtnDelete.TabIndex = 6;
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -537,10 +550,10 @@
             this.BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.BtnEdit.ForeColor = System.Drawing.Color.White;
-            this.BtnEdit.Location = new System.Drawing.Point(5, 104);
+            this.BtnEdit.Location = new System.Drawing.Point(5, 103);
             this.BtnEdit.Margin = new System.Windows.Forms.Padding(5);
             this.BtnEdit.Name = "BtnEdit";
-            this.BtnEdit.Size = new System.Drawing.Size(184, 89);
+            this.BtnEdit.Size = new System.Drawing.Size(184, 88);
             this.BtnEdit.TabIndex = 5;
             this.BtnEdit.Text = "Edit";
             this.BtnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -560,7 +573,7 @@
             this.BtnAdd.Location = new System.Drawing.Point(5, 5);
             this.BtnAdd.Margin = new System.Windows.Forms.Padding(5);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(184, 89);
+            this.BtnAdd.Size = new System.Drawing.Size(184, 88);
             this.BtnAdd.TabIndex = 4;
             this.BtnAdd.Text = "Add";
             this.BtnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -572,7 +585,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 135);
+            this.label1.Size = new System.Drawing.Size(193, 132);
             this.label1.TabIndex = 1;
             this.label1.Text = "Process name*";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -586,7 +599,7 @@
             this.txtProName.Margin = new System.Windows.Forms.Padding(3, 25, 3, 3);
             this.txtProName.MaxLength = 256;
             this.txtProName.Name = "txtProName";
-            this.txtProName.Size = new System.Drawing.Size(260, 38);
+            this.txtProName.Size = new System.Drawing.Size(260, 45);
             this.txtProName.TabIndex = 1;
             // 
             // numArrivalTime
@@ -594,7 +607,7 @@
             this.numArrivalTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
             this.numArrivalTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numArrivalTime.ForeColor = System.Drawing.Color.White;
-            this.numArrivalTime.Location = new System.Drawing.Point(202, 160);
+            this.numArrivalTime.Location = new System.Drawing.Point(202, 157);
             this.numArrivalTime.Margin = new System.Windows.Forms.Padding(3, 25, 3, 3);
             this.numArrivalTime.Maximum = new decimal(new int[] {
             100000,
@@ -602,7 +615,7 @@
             0,
             0});
             this.numArrivalTime.Name = "numArrivalTime";
-            this.numArrivalTime.Size = new System.Drawing.Size(260, 38);
+            this.numArrivalTime.Size = new System.Drawing.Size(260, 45);
             this.numArrivalTime.TabIndex = 2;
             // 
             // numBurstTime
@@ -610,7 +623,7 @@
             this.numBurstTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
             this.numBurstTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numBurstTime.ForeColor = System.Drawing.Color.White;
-            this.numBurstTime.Location = new System.Drawing.Point(202, 295);
+            this.numBurstTime.Location = new System.Drawing.Point(202, 289);
             this.numBurstTime.Margin = new System.Windows.Forms.Padding(3, 25, 3, 3);
             this.numBurstTime.Maximum = new decimal(new int[] {
             100000,
@@ -618,7 +631,7 @@
             0,
             0});
             this.numBurstTime.Name = "numBurstTime";
-            this.numBurstTime.Size = new System.Drawing.Size(260, 38);
+            this.numBurstTime.Size = new System.Drawing.Size(260, 45);
             this.numBurstTime.TabIndex = 3;
             // 
             // GbGanttChart
@@ -630,7 +643,7 @@
             this.GbGanttChart.ForeColor = System.Drawing.Color.White;
             this.GbGanttChart.Location = new System.Drawing.Point(674, 3);
             this.GbGanttChart.Name = "GbGanttChart";
-            this.GbGanttChart.Size = new System.Drawing.Size(665, 405);
+            this.GbGanttChart.Size = new System.Drawing.Size(665, 398);
             this.GbGanttChart.TabIndex = 0;
             this.GbGanttChart.TabStop = false;
             this.GbGanttChart.Text = "Gantt Chart";
@@ -640,9 +653,9 @@
             this.pnlGanttContainer.AutoScroll = true;
             this.pnlGanttContainer.Controls.Add(this.DGV);
             this.pnlGanttContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlGanttContainer.Location = new System.Drawing.Point(3, 34);
+            this.pnlGanttContainer.Location = new System.Drawing.Point(3, 41);
             this.pnlGanttContainer.Name = "pnlGanttContainer";
-            this.pnlGanttContainer.Size = new System.Drawing.Size(659, 368);
+            this.pnlGanttContainer.Size = new System.Drawing.Size(659, 354);
             this.pnlGanttContainer.TabIndex = 19;
             // 
             // DGV
@@ -695,6 +708,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DGV.RowHeadersVisible = false;
+            this.DGV.RowHeadersWidth = 51;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -716,7 +730,7 @@
             // 
             // SJF_UC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Controls.Add(this.tlpMain);
