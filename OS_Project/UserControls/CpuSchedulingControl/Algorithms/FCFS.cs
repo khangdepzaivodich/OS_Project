@@ -15,8 +15,9 @@ namespace OS_Project.UserControls.CpuSchedulingControl.Algorithms
         public List<Process> InputProcesses { get; set; }
         public List<Process> ResultProcesses { get; private set; }
 
-        public FCFSScheduler(List<Process> processes)
+        public FCFSScheduler(IEnumerable<Process> processes)
         {
+            // Clone input để không sửa gốc
             InputProcesses = processes
                 .Select(p => new Process
                 {
@@ -25,52 +26,56 @@ namespace OS_Project.UserControls.CpuSchedulingControl.Algorithms
                     ArrivalTime = p.ArrivalTime,
                     BurstTime = p.BurstTime,
                     RemainingTime = p.BurstTime
-                }).ToList();
+                })
+                .OrderBy(p => p.ArrivalTime)
+                .ToList();
 
             ResultProcesses = new List<Process>();
         }
 
         public void Run()
         {
-            if (InputProcesses.Count == 0)
+            ResultProcesses.Clear();
+            if (!InputProcesses.Any())
                 return;
 
-            var queue = InputProcesses.OrderBy(p => p.ArrivalTime).ToList();
-            int currentTime = 0;
+            // Khởi currentTime = arrival của process đầu tiên
+            int currentTime = InputProcesses[0].ArrivalTime;
 
-            while (queue.Count > 0)
+            foreach (var p in InputProcesses)
             {
-                var p = queue[0];
-
+                // Nếu arrival > currentTime ⇒ chèn idle
                 if (p.ArrivalTime > currentTime)
                 {
                     var idle = new Process
                     {
-                        Id = -1,
+                        Id = 0,
                         Name = "Idle",
                         ArrivalTime = currentTime,
                         StartTime = currentTime,
                         BurstTime = p.ArrivalTime - currentTime,
                         FinishTime = p.ArrivalTime,
-                        RemainingTime = 0
+                        RemainingTime = 0,
+                        WaitTime = 0,
+                        TurnAroundTime = 0
                     };
+
                     ResultProcesses.Add(idle);
                     currentTime = p.ArrivalTime;
                 }
 
+                // Schedule process p
                 p.StartTime = currentTime;
                 p.FinishTime = p.StartTime + p.BurstTime;
                 p.WaitTime = p.StartTime - p.ArrivalTime;
                 p.TurnAroundTime = p.FinishTime - p.ArrivalTime;
                 p.RemainingTime = 0;
 
-                currentTime = p.FinishTime;
-
                 ResultProcesses.Add(p);
-                queue.RemoveAt(0);
+                currentTime = p.FinishTime;
             }
         }
-
     }
+
 
 }
